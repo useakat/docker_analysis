@@ -1,0 +1,8 @@
+{
+  "run_list" : [ 
+      "recipe[emacs]",
+      "recipe[dev-tools]",
+      "recipe[root]",
+      "recipe[checkmate]"
+  ]
+}

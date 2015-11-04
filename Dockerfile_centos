@@ -1,0 +1,17 @@
+# install OS
+FROM centos:centos7
+#FROM ubuntu:latest
+
+# Author information
+MAINTAINER Yoshitaro Takaesu <useakat@gmail.com>
+
+ENV CHEFHOME /chef-repo
+ADD chef-repo /chef-repo
+ADD .bashrc /root/.bashrc
+ADD .bash_profile /root/.bash_profile
+ADD .bash_aliases /root/.bash_aliases
+
+#RUN apt-get install wget
+#RUN apt-get install make
+RUN curl -L http://www.opscode.com/chef/install.sh | bash
+RUN cd ${CHEFHOME} && chef-solo -c ${CHEFHOME}/solo.rb -j ${CHEFHOME}/nodes/docker.json
